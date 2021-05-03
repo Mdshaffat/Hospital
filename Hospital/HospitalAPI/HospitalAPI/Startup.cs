@@ -1,6 +1,8 @@
+using HospitalAPI.DataAccess.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,6 +29,9 @@ namespace HospitalAPI
         {
 
             services.AddControllers();
+            services.AddDbContext<ApplicationDbContext>(options =>
+                            options.UseSqlServer(Configuration.GetConnectionString("MvcMovieContext")));
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "HospitalAPI", Version = "v1" });
