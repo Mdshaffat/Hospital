@@ -21,6 +21,7 @@ namespace HospitalAPI.DataAccess.Data.Repository
 
         public async Task<IReadOnlyList<Branch>> GetBranchesAsync()
         {
+
             return await _context.Branch.ToListAsync();
         }
         public async Task<Branch> GetBranchByIdAsync(int id)

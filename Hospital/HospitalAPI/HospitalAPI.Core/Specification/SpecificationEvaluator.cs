@@ -18,7 +18,21 @@ namespace HospitalAPI.Core.Specification
             {
                 query = query.Where(spec.Criteria);
             }
-            query = spec.Includes.Aggregate(query, (current, include) => current.Include(include));
+
+            if (spec.OrderBy != null)
+            {
+                query = query.OrderBy(spec.OrderBy);
+            }
+
+            if (spec.OrderBydesc != null)
+            {
+                query = query.OrderByDescending(spec.OrderBydesc);
+            }
+
+
+            //query = spec.Includes.Aggregate(query, (current, include) => current.Include(include));
+
+
             return query;
         }
     }

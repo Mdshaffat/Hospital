@@ -1,4 +1,5 @@
 ﻿using HospitalAPI.Core.Models;
+using HospitalAPI.Core.Specification;
 using HospitalAPI.DataAccess.Data;
 using HospitalAPI.DataAccess.Data.Repository.IRepository;
 using Microsoft.AspNetCore.Http;
@@ -26,9 +27,12 @@ namespace HospitalAPI.Controllers
 
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Branch>>> Getbranch()
+        public async Task<ActionResult<IEnumerable<Branch>>> Getbranch(string sort,string district, bool? isactive, string search)
         {
-            var branches =await _branchrepo.ListAllAsync();
+            var spec = new BranchWithOrderBySpecification(sort, district, isactive,search);
+            var branches =await _branchrepo.ListAsyncWithSpec(spec);
+
+
             return Ok(branches);
         }
 
