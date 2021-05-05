@@ -1,4 +1,6 @@
 using HospitalAPI.DataAccess.Data;
+using HospitalAPI.DataAccess.Data.Repository;
+using HospitalAPI.DataAccess.Data.Repository.IRepository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -31,6 +33,7 @@ namespace HospitalAPI
             services.AddControllers();
             services.AddDbContext<ApplicationDbContext>(options =>
                             options.UseSqlServer(Configuration.GetConnectionString("MvcMovieContext")));
+            services.AddScoped<IBranchRepository, BranchRepository>();
 
             services.AddSwaggerGen(c =>
             {

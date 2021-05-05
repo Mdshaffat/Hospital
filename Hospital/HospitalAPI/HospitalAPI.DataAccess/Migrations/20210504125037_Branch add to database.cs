@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HospitalAPI.DataAccess.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class Branchaddtodatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

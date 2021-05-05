@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HospitalAPI.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210503145852_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210504125037_Branch add to database")]
+    partial class Branchaddtodatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
