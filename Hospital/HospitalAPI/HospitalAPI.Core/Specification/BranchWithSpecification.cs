@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace HospitalAPI.Core.Specification
 {
-    public class BranchWithSpecification : BaseSpecification<Branch>
+    public class BranchWithSpecification
     {
-        public BranchWithSpecification()
-        {
-
-        }
     }
+    
 }
