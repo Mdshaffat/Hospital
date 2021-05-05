@@ -16,24 +16,26 @@ namespace HospitalAPI.Controllers
     public class BranchController : ControllerBase
     {
         private readonly IBranchRepository _repo;
+        private readonly IGenericRepository<Branch> _branchrepo;
 
-        public BranchController(IBranchRepository repo)
+        public BranchController(IBranchRepository repo, IGenericRepository<Branch> branchrepo)
         {
             _repo = repo;
+            _branchrepo = branchrepo;
         }
 
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Branch>>> Getbranch()
         {
-            var branches =await _repo.GetBranchesAsync();
+            var branches =await _branchrepo.ListAllAsync();
             return Ok(branches);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Branch>> Getbranch(int id)
         {
-            var branch = await _repo.GetBranchByIdAsync(id);
+            var branch = await _branchrepo.GetByIdAsync(id);
             return Ok(branch);
         }
 

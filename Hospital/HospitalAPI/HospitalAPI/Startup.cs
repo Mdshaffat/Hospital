@@ -34,6 +34,7 @@ namespace HospitalAPI
             services.AddDbContext<ApplicationDbContext>(options =>
                             options.UseSqlServer(Configuration.GetConnectionString("MvcMovieContext")));
             services.AddScoped<IBranchRepository, BranchRepository>();
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 
             services.AddSwaggerGen(c =>
             {
